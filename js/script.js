@@ -228,7 +228,7 @@ function renderizarTotal(){
     precioFinal.innerHTML=`Precio total = <del>$${sumaSubtotal}</del> $${sumaSubtotal*0.9}`
   }
 }
-
+renderizarTotal()
 
 let inputN = document.getElementById("inputNombre")
 inputNombre.addEventListener("input", fnInputN)

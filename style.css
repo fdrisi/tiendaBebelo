@@ -3,13 +3,24 @@
   
   .productoSinStock {
     color: red;
-    .botonAgregar{
-      pointer-events: none;
-      opacity: .65;
-    }
   }
+  #productos{
+    margin-bottom: 15px;
+  }
+  .navbar{
+    color: white;
+    font-weight: 800;
 
-  
+  }
+  .form-control {
+    width: 300px;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
+}
   .nombreProducto {
     color: red;
   }

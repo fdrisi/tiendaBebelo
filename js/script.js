@@ -109,11 +109,13 @@ let productos = [
 let btnCompra = document.getElementById("botonCompra")
 btnCompra.onclick = ()=>{
   localStorage.clear()
+  arrayCarrito = []
   carrito.innerHTML=""
 }
 let btnBorrar = document.getElementById("botonBorrar")
 btnBorrar.onclick = ()=>{
   localStorage.clear()
+  arrayCarrito = []
   carrito.innerHTML=""
 }
 
@@ -147,15 +149,33 @@ function renderizarProductos(arrayProductos){
         if (bebida.stock ==0){
             stockProducto = "Producto Sin Stock"
         }
+        if (bebida.stock > 0){
         tarjetaProducto.innerHTML = `
-            <img src=${bebida.img} class="img"/>
-            <p class="nombreProducto"> ${bebida.nombre+" "+bebida.unidades+unidadesProducto}</p>
-            <p> $${bebida.precio}</p>
-            <p> ${bebida.volumen+"cc."} </p>
-            <p> ${stockProducto}
-            <br>
-            <button class="botonAgregar" id=${bebida.id}> Agregar al carrito</button>
+          <div class="card" style="width: 18rem;">
+          <img src=${bebida.img} class="img" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${bebida.nombre+" "+bebida.unidades+unidadesProducto}</h5>
+              <p class="card-text">$${bebida.precio}</p>
+              <p class="card-text">${bebida.volumen+"cc."}</p>
+              <p> ${stockProducto}</p>
+              <button class="botonAgregar" id=${bebida.id}> Agregar al carrito</button>
+            </div>
+          </div>
         `
+        } else {
+          tarjetaProducto.innerHTML = `
+          <div class="card" style="width: 18rem;">
+          <img src=${bebida.img} class="img" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${bebida.nombre+" "+bebida.unidades+unidadesProducto}</h5>
+              <p class="card-text">$${bebida.precio}</p>
+              <p class="card-text">${bebida.volumen+"cc."}</p>
+              <p> ${stockProducto}</p>
+              <button disabled class="botonAgregar" title="No hay stock de este producto" id=${bebida.id}> Agregar al carrito</button>
+            </div>
+          </div>
+        `
+        }
         contenedorProductos.append(tarjetaProducto)
     }
     let botonAgregar = document.getElementsByClassName("botonAgregar")
@@ -171,11 +191,11 @@ function fnAgregarAlCarrito(e){
     
     if (posicionProducto != -1) {
         arrayCarrito[posicionProducto] = {
-          id: arrayCarrito[posicionProducto].id, nombre: arrayCarrito[posicionProducto].nombre, precio: arrayCarrito[posicionProducto].precio, unidades: arrayCarrito[posicionProducto].unidades + 1, subtotal: arrayCarrito[posicionProducto].precio * (arrayCarrito[posicionProducto].unidades + 1)
+          id: arrayCarrito[posicionProducto].id, nombre: arrayCarrito[posicionProducto].nombre, unidades: arrayCarrito[posicionProducto].unidades, precio: arrayCarrito[posicionProducto].precio, cantidad: arrayCarrito[posicionProducto].cantidad + 1, subtotal: arrayCarrito[posicionProducto].precio * (arrayCarrito[posicionProducto].cantidad + 1), img: arrayCarrito[posicionProducto].img
         }
       } else {
         arrayCarrito.push({
-          id: productoBuscado.id, nombre: productoBuscado.nombre, precio: productoBuscado.precio, unidades: 1, subtotal: productoBuscado.precio
+          id: productoBuscado.id, nombre: productoBuscado.nombre, unidades: productoBuscado.unidades, precio: productoBuscado.precio, cantidad: 1, subtotal: productoBuscado.precio, img: productoBuscado.img
         })
       }
     renderizarCarrito()
@@ -185,9 +205,10 @@ function renderizarCarrito() {
     for (const itemCarrito of arrayCarrito) {
       carrito.innerHTML += `
         <div class="itemCarrito">
-          <h4>${itemCarrito.nombre}</h4>
-          <h4>${itemCarrito.unidades}</h4>
+          <h4>${itemCarrito.nombre+" x"+ itemCarrito.unidades}</h4>
+          <h4>${itemCarrito.cantidad}</h4>
           <h4>${itemCarrito.subtotal}</h4>
+          <img class="imgCarrito" src="${itemCarrito.img}">
         </div>
       `
     }
@@ -201,7 +222,11 @@ function renderizarCarrito() {
 let sumaSubtotal = arrayCarrito.reduce((acum, producto)=>acum + producto.subtotal, 0)
 
 function renderizarTotal(){
+  if (sumaSubtotal<15000){
   precioFinal.innerHTML=`Precio total = $${sumaSubtotal}`
+  } else {
+    precioFinal.innerHTML=`Precio total = <del>$${sumaSubtotal}</del> $${sumaSubtotal*0.9}`
+  }
 }
 
 
@@ -221,3 +246,20 @@ function fnInputC(){
 
 
 localStorage.clear()
+
+
+
+
+
+
+
+
+/* 
+<div class="card" style="width: 18rem;">
+  <img src="${productos.img}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> */

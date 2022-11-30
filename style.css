@@ -1,17 +1,14 @@
-.caja {
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-  }
   
-  .producto {
-    background-color: burlywood;
-    width: 400px;
-  }
+
   
   .productoSinStock {
-    background-color: lightcoral;
+    color: red;
+    .botonAgregar{
+      pointer-events: none;
+      opacity: .65;
+    }
   }
+
   
   .nombreProducto {
     color: red;

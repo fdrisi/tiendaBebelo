@@ -38,9 +38,19 @@
     margin-bottom: 15px;
   }
   .navbar{
-    color: white;
-    font-weight: 800;
+    z-index:999;
+    margin:0 auto;
+    border-bottom:1px solid #dadada;
+    width:100%;
+    position:fixed;
+    top:0;
+    right:0;
+    color: blanchedalmond;
+    font-size: 28px;
+  }
 
+  #filtrarCategoria{
+    margin-top: 70px;
   }
   .form-control {
     width: 300px;
@@ -61,12 +71,6 @@
   align-items: center;
   padding: 10px 0;
 }
-
-  #carrito {
-    width: 500px;
-    min-height: 100px;
-    border: 1px solid black;
-  }
   
   .itemCarrito {
     display: flex;
@@ -81,35 +85,3 @@
   }
 
 
-
-
-
-
-
-
-
-  .shopping-cart-items {
-    padding: 20px 0px;
-  }
-  
-  .shopping-cart-header {
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .shopping-cart-image {
-    max-width: 80px;
-    border-radius: 20px;
-  }
-  
-  .shopping-cart-quantity-input {
-    max-width: 45px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #eee;
-    padding: 5px;
-  }
-  
-  .shopping-cart-total {
-    min-height: 96px;
-  }
-  

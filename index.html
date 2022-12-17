@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
     <title>Tienda Bebelo</title>
@@ -20,37 +21,38 @@
             <div class="col-5">
                 <input class="form-control mr-sm-2" id="inputCategoria" placeholder="Buscar por tipo de bebida">
             </div>
+
         </div>
     </nav>
-    <div id="filtrarCategoria"></div>
-<!--     <div id="botonesCat">
-        <button id="botonAperitivos">Aperitivos</button>
-    </div> -->
+
+    <div id="filtrarCategoria">
+        <div id="botonesCat" class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" id="btnAperitivo">Aperitivos y licores</button>
+            <button type="button" class="btn btn-primary" id="btnCerveza">Cerveza</button>
+            <button type="button" class="btn btn-primary" id="btnGin">Gin</button>
+            <button type="button" class="btn btn-primary" id="btnWhisky">Whisky</button>
+            <button type="button" class="btn btn-primary" id="btnVodka">Vodka</button>
+            <button type="button" class="btn btn-primary" id="btnRon">Ron</button>
+            <button type="button" class="btn btn-primary" id="btnVino">Vino</button>
+            <button type="button" class="btn btn-primary" id="btnSinAlcohol">Sin Alcohol</button>
+            <button type="button" class="btn btn-primary" id="btnTodo">Ver Todo</button>
+        </div>
+    </div>
 
     <div id="productos">
         <h2>Nuestros Productos</h2>
         <div id="contenedorProductos" class="container"></div>
-    </div>
-<!--     <div id="cervezas">
-        <h2>Cervezas</h2>
-        <div id="contenedorProductos" class="container"></div>
-    </div>
-    <div id="bebidaBlanca">
-        <h2>Bebida Blanca</h2>
-        <div id="contenedorProductos" class="container"></div>
-    </div>
-    <div id="vinos">
-        <h2>Vinos</h2>
-        <div id="contenedorProductos" class="container"></div>
-    </div>
-    <div id="sinAlcohol">
-        <h2>Energizantes, gaseosas y jugos</h2>
-        <div id="contenedorProductos" class="container"></div>
-    </div> -->
+
     <div id="carrito"></div>
     <div id="precioFinal"></div>
     <button id="botonCompra">Finalizar Compra</button>
     <button id="botonBorrar">Eliminar Carrito</button>
+
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>
